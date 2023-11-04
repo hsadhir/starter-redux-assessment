@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import fetch from 'node-fetch';
+
+const API_URL = process.env.API_URL || "http://localhost:3004";
 
 export const fetchSuggestion = createAsyncThunk(
   "suggestion/fetchSuggestion",
   async () => {
-    const response = await fetch("http://localhost:3004/api/suggestion");
+    const response = await fetch(`${API_URL}/api/suggestion`);
     const { data } = await response.json();
     return data;
   }
